@@ -23,6 +23,12 @@ const User = new Schema({
         minlength: 10,
         
     }, 
+    phone:{
+        type:String,
+        required:true,
+        minlength:10,
+        maxlength:12
+    },
     admin:{
         type:Boolean,
         default:false

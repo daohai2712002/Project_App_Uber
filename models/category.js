@@ -1,21 +1,27 @@
 const mongoose = require('mongoose');
 const Schame = mongoose.Schema;
 
-const categorySchema = new Schame({
+const Categories = new Schame({
     name:{
         type:String,
         required:true,
         unique:true
     },
-    parent_id:{
-        type:String,
-        required:true
-    },
+  
     slug:{
         type:String,
         required:true
-    }
+    },
+    productId:[{
+        type:Schame.Types.ObjectId,
+        ref:"Products"
+    }],
+    userId:[{
+        type:Schame.Types.ObjectId,
+        ref:"User"
+        
+    }]
 
 },{timestamps:true});
-const Category = mongoose.model('cetegorySchema', categorySchema);
+const Category = mongoose.model('Categories', Categories);
 module.exports = Category;

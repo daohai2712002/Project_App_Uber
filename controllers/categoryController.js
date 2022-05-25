@@ -6,11 +6,11 @@ const categoryController = {
         try {
             const addCategory = await new Category({
                 name: req.body.name,
-                parent_id:req.body.parent_id,
-                slug:req.body.slug
+                slug:req.body.slug,
+                userId:req.user._id
             });
             addCategory.save();
-            res.status(200).json(addCategory);
+            res.status(200).json("add success");
         } catch (err) {
             res.status(500).json(err);
             
@@ -25,6 +25,16 @@ const categoryController = {
         } catch (err) {
             res.status(500).json(err);
             
+        }
+    },
+    //show follow id
+    getCategoryId:async(req,res)=>{
+        try {
+            const id = req.params.id;
+            const getCategoryId = await Category.findById(id);
+            res.status(200).json(getCategoryId);
+        } catch (err) {
+            res.status(500).json(err);
         }
     },
     //update

@@ -22,7 +22,7 @@ const imageController = {
             else{
                 const newImage = new Sliders({
                     name: req.body.name,
-                    iamge:{
+                    image:{
                         data:req.file.filename,
                         contentType:'image/png'
                     }
@@ -47,9 +47,9 @@ const imageController = {
     updateSlider:async(req,res)=>{
         try {
             const id = req.params.id;
-            const update = req.body;
-            const updateSlider = await Sliders.findByIdAndUpdate(id,update, { new: true });
-            res.status(200).json(updateSlider.name);
+            const option = req.body;
+            const updateSlider = await Sliders.findByIdAndUpdate(id,option, { new: true });
+            res.status(200).json(updateSlider);
         } catch (err) {
             res.status(500).json(err);
             

@@ -8,6 +8,7 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var sliderRouter = require('./routes/slider');
+const productRouter = require('./routes/product');
 const categoryRouter = require('./routes/category');
 const { default: mongoose } = require('mongoose');
 const authController = require('./controllers/authController');
@@ -41,6 +42,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/slider', sliderRouter);
 app.use('/category',categoryRouter);
+app.use('/product',productRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

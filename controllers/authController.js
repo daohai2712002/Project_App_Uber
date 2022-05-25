@@ -2,6 +2,7 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookie = require('cookie-parser');
+const Users = require('../models/user');
 let refreshTokens = [];
 const authController = {
     //get all user
@@ -50,6 +51,7 @@ const authController = {
                 username: req.body.username,
                 email: req.body.email,
                 password: hashed,
+                phone:req.body.phone
             });
             //luu database
             const user = await newUser.save();
@@ -152,6 +154,26 @@ const authController = {
             (token) => token !== req.cookies.refreshToken
         );
         res.status(200).json("Logged out !");
+    },
+    //search
+    searchUser:async(req,res)=>{
+        try {
+            const searchUser = await Users.find({
+                "$or":[
+                    {
+                        username:{$regex:req.params.key}
+                        
+                    },
+                    {
+                        email:{$regex:req.params.key}
+                    }
+                    
+                ]    
+            });
+            res.status(200).json(searchUser);
+        } catch (err) {
+            res.status(400).json(err);
+        }
     }
        
 }

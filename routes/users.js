@@ -15,5 +15,6 @@ router.delete("/:id", middlewareController.verifyTokenAndAdminAuth ,authControll
 router.post("/refresh",authController.requestRefreshToken);
 //logout
 router.post("/logout",middlewareController.verifyToken,authController.logout);
-
+//search
+router.get('/search/:key',authController.searchUser);
 module.exports = router;

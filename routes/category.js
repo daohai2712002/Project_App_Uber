@@ -10,7 +10,8 @@ router.get('/getCategory',categoryController.getCategory);
 router.put('/update/:id',categoryController.updateCategory);
 //delete
 router.delete('/delete/:id',categoryController.deleteCategory);
-
+//get id
+router.get('getCategory/:id',categoryController.getCategoryId);
 
 
 module.exports = router;
