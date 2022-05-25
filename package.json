@@ -24,5 +24,9 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
     "shortid": "^2.2.16"
+  },
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/daohai2712002/Project_App_Uber.git"
   }
 }
