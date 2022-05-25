@@ -48,7 +48,7 @@ const authController = {
             const hashed = await bcrypt.hash(req.body.password, salt);
             //creat new user
             const newUser = await new User({
-                username: req.body.username,
+                name: req.body.name,
                 email: req.body.email,
                 password: hashed,
                 phone:req.body.phone
@@ -65,7 +65,7 @@ const authController = {
 
     login: async(req,res)=>{
         try {
-            const user = await User.findOne({ username: req.body.username });
+            const user = await User.findOne({ name: req.body.name });
             if (!user) {
                 return res.status(404).json("Wrong username!");
             };
@@ -161,7 +161,7 @@ const authController = {
             const searchUser = await Users.find({
                 "$or":[
                     {
-                        username:{$regex:req.params.key}
+                        name:{$regex:req.params.key}
                         
                     },
                     {
